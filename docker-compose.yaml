@@ -3,8 +3,7 @@ services:
     build: .
     container_name: google-drive-mcp
     volumes:
-      - ./config/gcp-oauth.keys.json:/config/gcp-oauth.keys.json
-      - ./config/tokens.json:/config/tokens.json
+      - ./config:/config
     environment:
       GOOGLE_DRIVE_OAUTH_CREDENTIALS: /config/gcp-oauth.keys.json
       GOOGLE_DRIVE_MCP_TOKEN_PATH: /config/tokens.json
@@ -16,8 +15,7 @@ services:
     build: .
     network_mode: host
     volumes:
-      - ./config/gcp-oauth.keys.json:/config/gcp-oauth.keys.json
-      - ./config/tokens.json:/config/tokens.json
+      - ./config:/config
     environment:
       GOOGLE_DRIVE_OAUTH_CREDENTIALS: /config/gcp-oauth.keys.json
       GOOGLE_DRIVE_MCP_TOKEN_PATH: /config/tokens.json
