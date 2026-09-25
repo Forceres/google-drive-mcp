@@ -1,0 +1,30 @@
+services:
+  google-drive-mcp:
+    build: .
+    networks:
+      - mcp
+    volumes:
+      - google-drive-config:/config
+    environment:
+      GOOGLE_DRIVE_OAUTH_CREDENTIALS: /config/gcp-oauth.keys.json
+      GOOGLE_DRIVE_MCP_TOKEN_PATH: /config/tokens.json
+
+  google-drive-auth:
+    build: .
+    network_mode: host
+    profiles:
+      - auth
+    volumes:
+      - google-drive-config:/config
+    environment:
+      GOOGLE_DRIVE_OAUTH_CREDENTIALS: /config/gcp-oauth.keys.json
+      GOOGLE_DRIVE_MCP_TOKEN_PATH: /config/tokens.json
+      GOOGLE_DRIVE_MCP_AUTH_PORT: 3000
+    command: ["node", "dist/index.js", "auth"]
+
+networks:
+  mcp:
+    external: true
+
+volumes:
+  google-drive-config:
