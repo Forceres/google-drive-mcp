@@ -10,8 +10,8 @@ COPY package*.json ./
 # Install production dependencies only, skipping lifecycle scripts
 RUN npm install
 
-COPY ./tsconfig.json ./
-COPY ./src ./src
+COPY tsconfig.json ./
+COPY src ./src
 
 # Copy built distribution files
 RUN npm run build
