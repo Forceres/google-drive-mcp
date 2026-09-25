@@ -1,6 +1,7 @@
 services:
   google-drive-mcp:
     build: .
+    container_name: google-drive-mcp
     networks:
       - mcp
     volumes:
@@ -11,6 +12,7 @@ services:
 
   google-drive-auth:
     build: .
+    container_name: google-drive-auth
     network_mode: host
     profiles:
       - auth
