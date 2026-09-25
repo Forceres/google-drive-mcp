@@ -29,6 +29,7 @@ services:
   google-drive-auth:
     build: .
     network_mode: host
+    restart: "no"
     volumes:
       - ./config:/config
     environment:
