@@ -2,8 +2,6 @@ services:
   google-drive-mcp:
     build: .
     container_name: google-drive-mcp
-    networks:
-      - mcp
     volumes:
       - google-drive-config:/config
     environment:
@@ -23,10 +21,6 @@ services:
       GOOGLE_DRIVE_MCP_TOKEN_PATH: /config/tokens.json
       GOOGLE_DRIVE_MCP_AUTH_PORT: 3000
     command: ["node", "dist/index.js", "auth"]
-
-networks:
-  mcp:
-    external: true
-
+    
 volumes:
   google-drive-config:
