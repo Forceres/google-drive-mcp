@@ -1,0 +1,18 @@
+services:
+  google-drive-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: google-drive-mcp
+    restart: unless-stopped
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      NODE_ENV: production
+      GOOGLE_DRIVE_OAUTH_CREDENTIALS: /config/gcp-oauth.keys.json
+      GOOGLE_DRIVE_MCP_TOKEN_PATH: /config/tokens.json
+
+    volumes:
+      - ./config:/config
