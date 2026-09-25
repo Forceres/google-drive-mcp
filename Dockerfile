@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN node scripts/build.js
 
 FROM node:24-slim AS runtime
 
