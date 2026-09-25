@@ -8,8 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install production dependencies only, skipping lifecycle scripts
-RUN npm ci --only=production --ignore-scripts
-
+RUN npm install
 # Copy built distribution files
 RUN npm run build
 
