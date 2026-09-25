@@ -4,18 +4,18 @@ WORKDIR /app
 
 COPY package*.json tsconfig.json ./
 
-RUN npm install
-
 COPY . .
 
-RUN node scripts/build.js
+RUN npm ci
+
+RUN npm run build
 
 FROM node:24-slim AS runtime
 
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install --production --ignore-scripts
+RUN npm ci --omit=dev --ignore-scripts
 
 COPY --from=build /app/dist ./dist
 
