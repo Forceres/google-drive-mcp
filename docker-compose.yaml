@@ -1,4 +1,19 @@
 services:
+  google-drive-init:
+    image: alpine:3.22
+    volumes:
+      - ./config:/config
+    command:
+      - sh
+      - -c
+      - |
+        mkdir -p /config
+        touch /config/tokens.json
+        chown -R 1000:1000 /config
+        chmod 700 /config
+        chmod 600 /config/*
+    restart: "no"
+
   google-drive-mcp:
     build: .
     container_name: google-drive-mcp
