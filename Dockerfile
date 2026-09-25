@@ -3,10 +3,14 @@ FROM node:24-slim AS build
 WORKDIR /app
 
 COPY package*.json tsconfig.json ./
+
 RUN npm ci
 
-RUN npm run build
+COPY src ./src
 
+COPY scripts ./scripts
+
+RUN npm run build
 
 FROM node:24-slim AS runtime
 
