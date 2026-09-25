@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm ci --only=production --ignore-scripts
 
 # Copy built distribution files
-RUN npm build
+RUN npm run build
 
 # Create directory for config files
 RUN mkdir -p /config
