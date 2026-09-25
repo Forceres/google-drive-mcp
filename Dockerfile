@@ -27,5 +27,3 @@ ENV GOOGLE_DRIVE_OAUTH_CREDENTIALS=/config/gcp-oauth.keys.json
 ENV GOOGLE_DRIVE_MCP_TOKEN_PATH=/config/tokens.json
 
 USER node
-
-ENTRYPOINT ["node", "dist/index.js"]
